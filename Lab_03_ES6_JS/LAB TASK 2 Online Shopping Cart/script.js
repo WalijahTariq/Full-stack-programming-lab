@@ -1,20 +1,17 @@
 let cart = [];
 
-function addToCart(...items) {
-  cart.push(...items);
+function addToCart(...items) { cart.push(...items); }
+
+document.getElementById("addProductBtn").addEventListener("click", () => {
+  const product = document.getElementById("productName").value.trim();
+  if(product) { addToCart(product); displayCart(); }
+});
+
+function displayCart() {
+  const [firstItem] = cart;
+  document.getElementById("cart").innerHTML = `
+    <p>Total Items: ${cart.length}</p>
+    <p>First Item: ${firstItem || "None"}</p>
+    <p>Updated Cart: ${cart.join(", ") || "Empty"}</p>
+  `;
 }
-
-// Add products
-addToCart("Laptop", "Mouse", "Keyboard");
-
-// Clone cart using Spread
-const updatedCart = [...cart];
-
-// Destructure
-const [firstItem, ...restItems] = updatedCart;
-
-document.getElementById("cart").innerHTML = `
-  <p>Total Items: ${updatedCart.length}</p>
-  <p>First Item: ${firstItem}</p>
-  <p>Updated Cart: ${updatedCart.join(", ")}</p>
-`;

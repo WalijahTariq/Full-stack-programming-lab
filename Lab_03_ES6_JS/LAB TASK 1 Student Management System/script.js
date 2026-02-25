@@ -18,15 +18,20 @@ class Student {
   }
 }
 
-const student1 = new Student(1, "Ali", 2, ["Math", "OOP"]);
-const student2 = new Student(2, "Sara", 4, ["DBMS", "AI"]);
-const student3 = new Student(3, "Ahmed", 1, ["English", "Programming"]);
+const students = [];
 
-const students = [student1, student2, student3];
+function displayStudents() {
+  document.getElementById("students").innerHTML = students.map(s => s.getDetails()).join("");
+}
 
-let output = "";
-students.forEach(student => {
-  output += student.getDetails();
+document.getElementById("addStudentBtn").addEventListener("click", () => {
+  const id = Number(document.getElementById("stuId").value);
+  const name = document.getElementById("stuName").value;
+  const semester = Number(document.getElementById("stuSemester").value);
+  const courses = document.getElementById("stuCourses").value.split(",").map(c => c.trim());
+
+  if(!id || !name || !semester) { alert("Please fill all fields"); return; }
+
+  students.push(new Student(id,name,semester,courses));
+  displayStudents();
 });
-
-document.getElementById("students").innerHTML = output;

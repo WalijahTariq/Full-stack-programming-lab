@@ -1,17 +1,13 @@
 const registeredCourses = new Set();
 
-// Adding courses
-registeredCourses.add("OOP");
-registeredCourses.add("DBMS");
-registeredCourses.add("AI");
-registeredCourses.add("OOP"); // duplicate attempt
+document.getElementById("addCourseBtn").addEventListener("click", ()=>{
+  const course=document.getElementById("newCourse").value.trim();
+  if(course){ registeredCourses.add(course); displayCourses(); }
+});
 
-let output = "<h3>Registered Courses:</h3>";
-
-for (const course of registeredCourses) {
-  output += `<p>${course}</p>`;
+function displayCourses(){
+  let output="<h3>Registered Courses:</h3>";
+  for(const course of registeredCourses) output+=`<p>${course}</p>`;
+  output+=`<p>Total Unique Courses: ${registeredCourses.size}</p>`;
+  document.getElementById("courses").innerHTML=output;
 }
-
-output += `<p><strong>Total Unique Courses: ${registeredCourses.size}</strong></p>`;
-
-document.getElementById("courses").innerHTML = output;

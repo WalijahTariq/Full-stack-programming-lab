@@ -1,29 +1,22 @@
 function fetchUsers() {
-  const isSuccess = true;
-
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (isSuccess) {
-        resolve([
-          { id: 1, name: "Ali" },
-          { id: 2, name: "Sara" },
-          { id: 3, name: "Ahmed" }
-        ]);
-      } else {
-        reject("Failed to load users.");
-      }
-    }, 3000);
+  const success = true;
+  return new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      if(success) resolve([
+        {id:1,name:"Ali"},
+        {id:2,name:"Sara"},
+        {id:3,name:"Ahmed"}
+      ]);
+      else reject("Failed to load users");
+    },3000);
   });
 }
 
-fetchUsers()
-  .then(users => {
-    let output = "";
-    users.forEach(user => {
-      output += `<p>${user.id} - ${user.name}</p>`;
-    });
-    document.getElementById("users").innerHTML = output;
-  })
-  .catch(error => {
-    document.getElementById("users").innerHTML = error;
-  });
+document.getElementById("loadUsersBtn").addEventListener("click", ()=>{
+  document.getElementById("users").innerHTML="Loading...";
+  fetchUsers()
+    .then(users=>{
+      document.getElementById("users").innerHTML=users.map(u=>`<p>${u.id} - ${u.name}</p>`).join("");
+    })
+    .catch(err=>document.getElementById("users").innerHTML=err);
+});

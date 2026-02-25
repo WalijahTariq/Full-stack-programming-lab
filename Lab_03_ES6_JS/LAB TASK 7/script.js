@@ -1,25 +1,62 @@
-const studentData = [
-  { name: "Ali", age: 20, semester: 2, courses: ["OOP", "Math"] },
-  { name: "Sara", age: 21, semester: 4, courses: ["AI", "DBMS"] },
-  { name: "Ahmed", age: 19, semester: 1, courses: ["English", "Programming"] }
+// Step 1: Create 3 student objects
+const students = [
+  {
+    name: "Ali",
+    age: 20,
+    semester: 4,
+    courses: ["OOP", "DBMS", "DSA"]
+  },
+  {
+    name: "Sara",
+    age: 21,
+    semester: 5,
+    courses: ["AI", "Web Dev", "CN"]
+  },
+  {
+    name: "Ahmed",
+    age: 19,
+    semester: 3,
+    courses: ["Math", "Physics", "Programming"]
+  }
 ];
 
-// Convert to JSON
-const jsonData = JSON.stringify(studentData);
+let jsonData = "";
 
-// Convert back to objects
-const parsedData = JSON.parse(jsonData);
+// Step 2: Convert to JSON
+function convertToJSON() {
+  jsonData = JSON.stringify(students, null, 2);
+  document.getElementById("jsonOutput").textContent = jsonData;
+  document.getElementById("studentDisplay").innerHTML = "";
+}
 
-let output = "";
+// Step 3: Convert JSON back to objects
+function parseJSON() {
+  if (!jsonData) {
+    alert("First convert to JSON!");
+    return;
+  }
 
-parsedData.forEach(({ name, age, semester, courses }) => {
-  output += `
-    <p>Name: ${name}</p>
-    <p>Age: ${age}</p>
-    <p>Semester: ${semester}</p>
-    <p>Courses: ${courses.join(", ")}</p>
-    <hr>
-  `;
-});
+  const parsedStudents = JSON.parse(jsonData);
 
-document.getElementById("students").innerHTML = output;
+  // Step 6: Loop using forEach
+  let output = "";
+
+  parsedStudents.forEach(student => {
+
+    // Step 4: Destructuring
+    const { name, age, semester, courses } = student;
+
+    output += `
+      <div class="student">
+        <strong>Name:</strong> ${name} <br>
+        <strong>Age:</strong> ${age} <br>
+        <strong>Semester:</strong> ${semester} <br>
+        <strong>Courses:</strong> ${courses.join(", ")}
+        <hr>
+      </div>
+    `;
+  });
+
+  // Step 5: Display in HTML using innerHTML
+  document.getElementById("studentDisplay").innerHTML = output;
+}
