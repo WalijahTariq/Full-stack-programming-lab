@@ -1,0 +1,5 @@
+body { font-family:Arial; text-align:center; padding:30px; background:#FFC1CC; }
+input { padding:5px; margin:5px; border-radius:4px; }
+button { padding:5px 10px; cursor:pointer; border-radius:4px; }
+#cart { background:white; padding:15px; margin:auto; width:350px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+.form-section { margin-bottom:20px; }

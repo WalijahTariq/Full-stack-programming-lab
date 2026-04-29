@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+
+<div class="box">
+  <h2>Interactive Calculator</h2>
+
+  <input id="n1" type="number" placeholder="First number">
+  <input id="n2" type="number" placeholder="Second number">
+
+  <select id="op">
+    <option value="+">Add</option>
+    <option value="-">Subtract</option>
+    <option value="*">Multiply</option>
+    <option value="/">Divide</option>
+  </select>
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="output" class="result"></div>
+</div>
+
+<script src="calculator.js"></script>
+</body>
+</html>

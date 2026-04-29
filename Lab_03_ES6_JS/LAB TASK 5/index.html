@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Catalog - Map</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Product Catalog</h2>
+
+  <h3>Search Product by ID</h3>
+  <input type="number" id="searchId" placeholder="Enter Product ID">
+  <button onclick="searchProduct()">Search</button>
+
+  <h3>Delete Product by ID</h3>
+  <input type="number" id="deleteId" placeholder="Enter Product ID">
+  <button onclick="deleteProduct()">Delete</button>
+
+  <h3>Total Products: <span id="totalProducts"></span></h3>
+
+  <h3>All Products</h3>
+  <div id="productList"></div>
+
+  <h3>Search Result</h3>
+  <div id="searchResult"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
